@@ -70,14 +70,14 @@ void merge(int vetor[], int esquerda, int meio, int direita) {
         k++;
     }
 
-    // Copia os elementos restantes de vetEsquerda, se houver
+    // Copia os elementos restantes de vetEsquerda
     while (i < n1) {
         vetor[k] = vetEsquerda[i];
         i++;
         k++;
     }
 
-    // Copia os elementos restantes de vetDireita, se houver
+    // Copia os elementos restantes de vetDireita
     while (j < n2) {
         vetor[k] = vetDireita[j];
         j++;
@@ -136,12 +136,13 @@ double tempoDeExecucaoMergeSort(int vetor[], int tamanho) {
     clock_t inicio, fim;
     inicio = clock();  // Captura o tempo de início
     
-    mergeSort(vetor, 0, tamanho - 1);  // Chama o Merge Sort com os parâmetros corretos
+    mergeSort(vetor, 0, tamanho - 1);  // Chama o Merge Sort com os parâmetros
     
-    fim = clock();  // Captura o tempo de fim
-    return ((double)(fim - inicio)) / CLOCKS_PER_SEC;  // Calcula o tempo gasto em segundos
+    fim = clock();  // Recebe o tempo de fim
+    return ((double)(fim - inicio)) / CLOCKS_PER_SEC;  // Irá calcular o tempo gasto em segundos
 }
 
+// Comparação dos algoritmos em três cenários diferentes
 void compararAlgoritmos(int tamanhos[], int numTamanhos) {
     for (int i = 0; i < numTamanhos; i++) {
         int tamanho = tamanhos[i];
@@ -149,22 +150,30 @@ void compararAlgoritmos(int tamanhos[], int numTamanhos) {
         
         printf("Tamanho do vetor: %d\n", tamanho);
         
-        // Gerar vetor aleatório
+        // 1. Comparar para dados aleatórios
         vetorAleatorio(vetor, tamanho);
-        printf("Bubble Sort (Aleatorio): %.6f s\n", tempoDeExecucao(bubbleSort, vetor, tamanho));
+        printf("Dados Aleatorios:\n");
+        printf("Bubble Sort: %.6f s\n", tempoDeExecucao(bubbleSort, vetor, tamanho));
+        printf("Selection Sort: %.6f s\n", tempoDeExecucao(selectionSort, vetor, tamanho));
+        printf("Insertion Sort: %.6f s\n", tempoDeExecucao(insertionSort, vetor, tamanho));
+        printf("Merge Sort: %.6f s\n\n", tempoDeExecucaoMergeSort(vetor, tamanho));
 
-        vetorAleatorio(vetor, tamanho);
-        printf("Selection Sort (Aleatorio): %.6f s\n", tempoDeExecucao(selectionSort, vetor, tamanho));
-
-        // Teste para vetores ordenados
+        // 2. Comparar para dados ordenados
         vetorOrdenado(vetor, tamanho);
-        printf("Insertion Sort (Ordenado): %.6f s\n", tempoDeExecucao(insertionSort, vetor, tamanho));
+        printf("Dados Ordenados:\n");
+        printf("Bubble Sort: %.6f s\n", tempoDeExecucao(bubbleSort, vetor, tamanho));
+        printf("Selection Sort: %.6f s\n", tempoDeExecucao(selectionSort, vetor, tamanho));
+        printf("Insertion Sort: %.6f s\n", tempoDeExecucao(insertionSort, vetor, tamanho));
+        printf("Merge Sort: %.6f s\n\n", tempoDeExecucaoMergeSort(vetor, tamanho));
 
-        // Teste para vetores reversos
+        // 3. Comparar para dados em ordem reversa
         vetorReverso(vetor, tamanho);
-        printf("Merge Sort (Reverso): %.6f s\n", tempoDeExecucaoMergeSort(vetor, tamanho));
+        printf("Dados em Ordem Reversa:\n");
+        printf("Bubble Sort: %.6f s\n", tempoDeExecucao(bubbleSort, vetor, tamanho));
+        printf("Selection Sort: %.6f s\n", tempoDeExecucao(selectionSort, vetor, tamanho));
+        printf("Insertion Sort: %.6f s\n", tempoDeExecucao(insertionSort, vetor, tamanho));
+        printf("Merge Sort: %.6f s\n\n", tempoDeExecucaoMergeSort(vetor, tamanho));
         
-        printf("\n");
         free(vetor);  // Libera o vetor após o uso
     }
 }
