@@ -142,7 +142,7 @@ double tempoDeExecucaoMergeSort(int vetor[], int tamanho) {
     return ((double)(fim - inicio)) / CLOCKS_PER_SEC;  // Irá calcular o tempo gasto em segundos
 }
 
-// Comparação dos algoritmos em três cenários diferentes
+// Comparação dos algoritmos: ordenados, em aleatório e na ordem reversa
 void compararAlgoritmos(int tamanhos[], int numTamanhos) {
     for (int i = 0; i < numTamanhos; i++) {
         int tamanho = tamanhos[i];
@@ -179,8 +179,8 @@ void compararAlgoritmos(int tamanhos[], int numTamanhos) {
 }
 
 int main() {
-    int tamanhos[] = {100, 1000, 10000, 100000};  // Defina os tamanhos dos vetores a serem testados
-    int numTamanhos = sizeof(tamanhos) / sizeof(tamanhos[0]);
+    int tamanhos[] = {100, 1000, 10000, 100000};  // Define os tamanhos dos vetores
+    int numTamanhos = sizeof(tamanhos) / sizeof(tamanhos[0]); // O programa não precisará ficar calculando o tamanho do vetor
     
     compararAlgoritmos(tamanhos, numTamanhos);
 
