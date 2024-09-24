@@ -33,6 +33,7 @@ void selectionSort(int vetor[], int n) {
 }
 
 // Função para Inserction Sort
+// Exemplos que o professor deu das cartas do baralho 
 void insertionSort(int vetor[], int n) {
     int i, j, chave;
     for (i = 1; i < n; i++) {
@@ -52,7 +53,7 @@ void merge(int vetor[], int esquerda, int meio, int direita) {
     int n2 = direita - meio;
     int vetEsquerda[n1], vetDireita[n2];
     
-    // Copia os dados para os arrays temporários
+    // Copia os dados para os vetores
     for (int i = 0; i < n1; i++)
         vetEsquerda[i] = vetor[esquerda + i];
     for (int j = 0; j < n2; j++)
